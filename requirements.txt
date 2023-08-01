@@ -1,0 +1,4 @@
+selene>=2.0.0rc3.post3
+selenium~=4.10.0
+pytest
+allure-pytest
