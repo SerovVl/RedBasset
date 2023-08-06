@@ -11,7 +11,7 @@ from allure_commons.types import Severity
 @allure.feature('Issues names')
 @allure.story('Issues in public repository can be found')
 @allure.link('https://github.com', name='Testing')
-def test_for_authorization(browser_management):
+def test_for_authorization(remote_browser):
     with allure.step('Открытие браузера'):
         main_page.open('https://redbasset.tech/')
 
