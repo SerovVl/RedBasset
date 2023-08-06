@@ -35,3 +35,5 @@ def remote_browser():
 #     browser.config.window_height = 1080
 #     yield
 #     browser.quit()
+
+# python3 -m pytest tests/
