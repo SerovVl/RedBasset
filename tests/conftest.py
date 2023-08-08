@@ -8,8 +8,6 @@ main_page = MainPage()
 auth_page = AuthPage()
 
 
-
-
 @pytest.fixture(scope='function', autouse=True)
 def remote_browser():
     capabilities = {
@@ -27,13 +25,3 @@ def remote_browser():
     driver.maximize_window()
     yield driver
     driver.quit()
-
-# @pytest.fixture(scope='function', autouse=True)
-# def browser_management():
-#     browser.config.base_url = os.getenv('selene.base_url', 'https://redbasset.tech/')
-#     browser.config.window_width = 1920
-#     browser.config.window_height = 1080
-#     yield
-#     browser.quit()
-
-# python3 -m pytest tests/
