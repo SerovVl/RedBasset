@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Tue Aug 08 07:09:25 GMT 2023","Tue Aug 08 07:09:33 GMT 2023","7705","tests","test_authorization","","","","test_for_authorization",""
