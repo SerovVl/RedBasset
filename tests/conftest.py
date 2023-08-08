@@ -1,13 +1,19 @@
+import os
+
 import pytest
 from selene import browser
 # import os
 from pages.authentication_page import AuthPage
 from pages.main_site_page import MainPage
 from selenium import webdriver
-
+from dotenv import load_dotenv
 main_page = MainPage()
 auth_page = AuthPage()
 
+
+@pytest.fixture(scope='session', autouse=True)
+def load_env():
+    load_dotenv()
 
 @pytest.fixture(scope='function', autouse=True)
 def remote_browser():
@@ -21,7 +27,8 @@ def remote_browser():
     }
     options = webdriver.ChromeOptions()
     options.set_capability('selenoid:options', capabilities)
-    driver = webdriver.Remote(command_executor='http://192.168.1.5:8080/wd/hub', options=options)
+    selenoid_url = os.getenv('selenoid_url')
+    driver = webdriver.Remote(command_executor=f'{selenoid_url}', options=options)
 
     browser.config.driver = driver
     driver.maximize_window()
