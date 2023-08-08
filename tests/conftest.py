@@ -1,19 +1,14 @@
-import os
-
 import pytest
 from selene import browser
-# import os
 from pages.authentication_page import AuthPage
 from pages.main_site_page import MainPage
 from selenium import webdriver
-from dotenv import load_dotenv
+
 main_page = MainPage()
 auth_page = AuthPage()
 
 
-@pytest.fixture(scope='session', autouse=True)
-def load_env():
-    load_dotenv()
+
 
 @pytest.fixture(scope='function', autouse=True)
 def remote_browser():
@@ -26,9 +21,7 @@ def remote_browser():
         'sessionTimeout': '8m'
     }
     options = webdriver.ChromeOptions()
-    options.set_capability('selenoid:options', capabilities)
-    selenoid_url = os.getenv('selenoid_url')
-    driver = webdriver.Remote(command_executor=f'{selenoid_url}', options=options)
+    driver = webdriver.Remote(command_executor='http://selenoid.mish.design:4444/wd/hub', options=options)
 
     browser.config.driver = driver
     driver.maximize_window()
