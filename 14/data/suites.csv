@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"broken","Wed Aug 09 14:19:40 GMT 2023","Wed Aug 09 14:19:40 GMT 2023","0","tests","test_podcaster_cabinet","","","","test_podcaster_cabinet",""
+"broken","Wed Aug 09 14:19:29 GMT 2023","Wed Aug 09 14:19:32 GMT 2023","2155","tests","test_authorization","","","","test_for_authorization",""
+"broken","Wed Aug 09 14:19:38 GMT 2023","Wed Aug 09 14:19:38 GMT 2023","0","tests","test_deleting_author","","","","test_deleting_author",""
+"broken","Wed Aug 09 14:19:36 GMT 2023","Wed Aug 09 14:19:36 GMT 2023","0","tests","test_creating_podcast","","","","test_creating_podcast",""
+"broken","Wed Aug 09 14:19:35 GMT 2023","Wed Aug 09 14:19:35 GMT 2023","0","tests","test_creating_delay_episode","","","","test_creating_delay_episode",""
+"broken","Wed Aug 09 14:19:33 GMT 2023","Wed Aug 09 14:19:33 GMT 2023","0","tests","test_creating_author","","","","test_creating_author",""
