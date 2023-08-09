@@ -57,9 +57,7 @@ def authorization(remote_browser):
 def podcaster_cabinet(authorization):
     main_page.header_drop_button()
     main_page.to_cabinet_button()
-    yield
-    podcaster.author_settings()
-    podcaster.delete_author()
+
 
 
 
