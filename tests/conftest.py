@@ -35,7 +35,7 @@ def remote_browser():
     }
     options = webdriver.ChromeOptions()
     options.set_capability('selenoid:options', capabilities)
-    driver = webdriver.Remote(command_executor='http://127.0.0.1:4444/wd/hub', options=options)
+    driver = webdriver.Remote(command_executor='http://selenoid.mish.design:4444/wd/hub', options=options)
 
     browser.config.driver = driver
     driver.maximize_window()
