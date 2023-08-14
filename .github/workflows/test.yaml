@@ -19,7 +19,9 @@ jobs:
           pip install -r requirements.txt
       - name: Install dependencies
         run: |
-          pytest --alluredir=allure-results
+#          pytest --alluredir=allure-results
+          testit --url https://team-rulw.testit.software/ --privatetoken d3o3TUN4WVV0VDZlcUhhNzE0 --projectid a74eee27-03b3-44e4-b532-3dc0d9e5ca0b --configurationid 62f42808-4615-4186-adad-927706a52e13
+          pytest --alluredir=allure-results && testit --resultsdir allure-results --testrunname RedBasset
 
       - name: Get Allure history
         uses: actions/checkout@v2

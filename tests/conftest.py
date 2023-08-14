@@ -57,12 +57,19 @@ def authorization(remote_browser):
 def podcaster_cabinet(authorization):
     main_page.header_drop_button()
     main_page.to_cabinet_button()
-
+    podcaster.close_monetization()
+    yield
+    podcaster.author_settings()
+    podcaster.delete_author()
+    time.sleep(10)
 
 
 
 @pytest.fixture()
-def creating_author(podcaster_cabinet):
+def creating_author(authorization):
+    main_page.header_drop_button()
+    main_page.to_cabinet_button()
+    podcaster.close_monetization()
     podcaster.click_creating_author()
     podcaster.upload_image('img/Mona_Lisa1.jpg')
     podcaster.fill_author_name('AQA Тест 123')
@@ -77,9 +84,31 @@ def creating_author(podcaster_cabinet):
     podcaster.fill_additional_phone('88005553535')
     podcaster.submit_button()
     time.sleep(2)
+    yield
+    podcaster.main_author_page('AQA Тест 123')
+    podcaster.author_settings()
+    podcaster.delete_author()
+    time.sleep(10)
 
 @pytest.fixture()
-def creating_podcast(creating_author):
+def creating_podcast(authorization):
+    main_page.header_drop_button()
+    main_page.to_cabinet_button()
+    podcaster.close_monetization()
+    podcaster.click_creating_author()
+    podcaster.upload_image('img/Mona_Lisa1.jpg')
+    podcaster.fill_author_name('AQA Тест 123')
+    podcaster.fill_author_description('По своей сути рыбатекст является альтернативой традиционному '
+                                      'lorem ipsum, который вызывает у некторых людей недоумение при '
+                                      'попытках прочитать рыбу текст. В отличии от lorem ipsum, текст рыба '
+                                      'на русском языке наполнит любой макет непонятным смыслом и придаст '
+                                      'неповторимый колорит советских времен. '
+                                      'Вы можете добавить в данное  поле до 600 символов!')
+    podcaster.additional_about_author()
+    podcaster.fill_additional_email('yksyp@mailto.plus')
+    podcaster.fill_additional_phone('88005553535')
+    podcaster.submit_button()
+    time.sleep(2)
     podcaster.click_creating_podcast()
     podcaster.fill_podcast_name('It\'s not me!')
     podcaster.fill_description_podcast('Этот подкаст создан с помощью автоматизированного ПО. '

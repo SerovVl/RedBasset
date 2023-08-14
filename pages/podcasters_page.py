@@ -3,12 +3,16 @@ from tests import paths
 from selene import browser, have, be, command
 import time
 
+
 # import tests
 
-class PodcasterPage():
+class PodcasterPage:
 
     def close_monetization(self):
-        browser.element('/html/body/div[4]/div/div/button').click()
+        monetization = browser.element('/html/body/div[4]/div/div/button')
+        if (monetization.wait_until(be.visible)):
+            monetization.click()
+        return self
 
     def click_creating_author(self):
         browser.element('[data-spec="podcaster-new-author"]').click()
@@ -46,8 +50,8 @@ class PodcasterPage():
         browser.element('//*[@id="__next"]/div[1]/div/div/main/div[1]/aside').should(have.text(value))
         return self
 
-    # def main_author_page(self, value):
-    #     browser.all('[data-spec^="podcaster-sidebar-author"]').element_by(have.exact_text(value)).click()
+    def main_author_page(self, value):
+        browser.all('[data-spec^="podcaster-sidebar-author"]').element_by(have.exact_text(value)).click()
 
     def click_creating_podcast(self):
         browser.element('[data-spec="podcaster-author-podcast-new"]').click()
@@ -169,6 +173,12 @@ class PodcasterPage():
 
     def delete_author(self):
         browser.element('//*[@id="__next"]/div[1]/div/div/main/div[2]/div/div[2]/div/div[5]/div/button').click()
-        browser.element('//*[@id="__next"]/div[1]/div/div/main/div[2]/div/div[2]/div/div[5]/div/div/ul/li[2]/button').click()
+        browser.element(
+            '//*[@id="__next"]/div[1]/div/div/main/div[2]/div/div[2]/div/div[5]/div/div/ul/li[2]/button').click()
         browser.element('/html/body/div[2]/div[3]/div/div/div/div/div/button[2]').click()
-        time.sleep(10)
+
+    def delete_podcast(self):
+        browser.element('//*[@id="__next"]/div[1]/div/div/main/div[2]/div/div[2]/ul/li/a/div[3]/button').click()
+        browser.element(
+            '//*[@id="__next"]/div[1]/div/div/main/div[2]/div/div[2]/ul/li/a/div[3]/div/ul/li[6]/button').click()
+        browser.element('/html/body/div[2]/div[3]/div/div/div/div/div/button[2]').click()
